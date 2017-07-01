@@ -91,12 +91,10 @@
         // Gallery.
         $window.on('load', function () {
 
-
-
             $gallery.poptrox({
                 baseZIndex: 10001,
                 useBodyOverflow: true,
-                usePopupEasyClose: true,
+                usePopupEasyClose: false,
                 overlayColor: '#1f2328',
                 overlayOpacity: 0.65,
                 usePopupDefaultStyling: false,
