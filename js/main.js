@@ -130,15 +130,17 @@
                 }, 100);
 
                 //banner video 资源加载
-                if($(window).innerWidth() > 736 ) {
-                    var $vi = $('<video autoplay loop muted></video>');
-                    $video.find('source').each(function (index, item) {
-                        var $source  = $(item).prop('src', $video.find('source').data('src'));
-                        var $st = $source.clone();
-                        $vi.append($st);
-                    });
-                    $video.replaceWith($vi);
-                }
+                setTimeout(function () {
+                    if($(window).innerWidth() > 736 ) {
+                        var $vi = $('<video autoplay loop muted></video>');
+                        $video.find('source').each(function (index, item) {
+                            var $source  = $(item).prop('src', $video.find('source').data('src'));
+                            var $st = $source.clone();
+                            $vi.append($st);
+                        });
+                        $video.replaceWith($vi);
+                    }
+                }, 1);
             }
         }
 
