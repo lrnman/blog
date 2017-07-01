@@ -140,15 +140,13 @@
                         });
                         $video.replaceWith($vi);
                     }
-                }, 1000);
+                }, 1);
             }
         }
 
         // Disable animations/transitions until the page has loaded.
         $window.on('load', function () {
-            window.setTimeout(function () {
-                $body.removeClass('is-loading');
-            }, 1);
+            $body.removeClass('is-loading');
         });
 
         // index Scrolly.
