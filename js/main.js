@@ -113,6 +113,11 @@
             $video = $('#banner').find('.video'),
             $navPanelToggle, $navPanel, $navPanelInner;
 
+        // Disable animations/transitions until the page has loaded.
+        $window.on('load', function () {
+            $body.removeClass('is-loading');
+        });
+
         /*
             page index
         */
@@ -127,27 +132,19 @@
                         $banner.remove();
                         clearInterval(timeId);
                     }
-                }, 100);
+                }, 1);
 
                 //banner video 资源加载
-                setTimeout(function () {
-                    if($(window).innerWidth() > 736 ) {
-                        var $vi = $('<video autoplay loop muted></video>');
-                        $video.find('source').each(function (index, item) {
-                            var $source  = $(item).prop('src', $video.find('source').data('src'));
-                            var $st = $source.clone();
-                            $vi.append($st);
-                        });
-                        $video.replaceWith($vi);
-                    }
-                }, 1);
+                var video = $banner.data('src');
+                if(!skel.vars.mobile && !skel.breakpoint('large').active && skel.vars.IEVersion > 9) {
+                    $window.one('load', function () {
+                        $video.replaceWith($('<video src="' + video + '" autoplay loop muted></video>'));
+                    });
+                }
             }
         }
 
-        // Disable animations/transitions until the page has loaded.
-        $window.on('load', function () {
-            $body.removeClass('is-loading');
-        });
+
 
         // index Scrolly.
         $('.scrolly').scrolly({
