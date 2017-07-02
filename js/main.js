@@ -115,7 +115,9 @@
 
         // Disable animations/transitions until the page has loaded.
         $window.on('load', function () {
-            $body.removeClass('is-loading');
+            setTimeout(function () {
+                $body.removeClass('is-loading');
+            }, 1);
         });
 
         /*
@@ -137,9 +139,7 @@
                 //banner video 资源加载
                 var video = $banner.data('src');
                 if(!skel.vars.mobile && !skel.breakpoint('large').active && skel.vars.IEVersion > 9) {
-                    $window.one('load', function () {
-                        $video.replaceWith($('<video src="' + video + '" autoplay loop muted></video>'));
-                    });
+                    $video.replaceWith($('<video src="' + video + '" autoplay loop muted></video>'));
                 }
             }
         }
