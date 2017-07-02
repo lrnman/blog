@@ -113,13 +113,6 @@
             $video = $('#banner').find('.video'),
             $navPanelToggle, $navPanel, $navPanelInner;
 
-        // Disable animations/transitions until the page has loaded.
-        $window.on('load', function () {
-            setTimeout(function () {
-                $body.removeClass('is-loading');
-            }, 1);
-        });
-
         /*
             page index
         */
@@ -128,6 +121,12 @@
             if (sessionStorage.getItem('banner-unfirst')) {
                 $banner.remove();
             } else {
+                //banner video 资源加载
+                var video = $banner.data('src');
+                if(!skel.vars.mobile && !skel.breakpoint('large').active && skel.vars.IEVersion > 9) {
+                    $video.replaceWith($('<video src="' + video + '" autoplay loop muted></video>'));
+                }
+
                 sessionStorage.setItem('banner-unfirst', true);
                 var timeId = setInterval(function () {
                     if ($banner.height() <= 3) {
@@ -135,16 +134,15 @@
                         clearInterval(timeId);
                     }
                 }, 1);
-
-                //banner video 资源加载
-                var video = $banner.data('src');
-                if(!skel.vars.mobile && !skel.breakpoint('large').active && skel.vars.IEVersion > 9) {
-                    $video.replaceWith($('<video src="' + video + '" autoplay loop muted></video>'));
-                }
             }
         }
 
-
+        // Disable animations/transitions until the page has loaded.
+        $window.on('load', function () {
+            setTimeout(function () {
+                $body.removeClass('is-loading');
+            }, 1);
+        });
 
         // index Scrolly.
         $('.scrolly').scrolly({
