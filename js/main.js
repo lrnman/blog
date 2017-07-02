@@ -113,6 +113,13 @@
             $video = $('#banner').find('.video'),
             $navPanelToggle, $navPanel, $navPanelInner;
 
+        // Disable animations/transitions until the page has loaded.
+        $window.on('load', function () {
+            setTimeout(function () {
+                $body.removeClass('is-loading');
+            }, 1);
+        });
+
         /*
             page index
         */
@@ -124,7 +131,9 @@
                 //banner video 资源加载
                 var video = $banner.data('src');
                 if(!skel.vars.mobile && !skel.breakpoint('large').active && skel.vars.IEVersion > 9) {
-                    $video.replaceWith($('<video src="' + video + '" autoplay loop muted></video>'));
+                    $window.on('load', function () {
+                        $video.replaceWith($('<video src="' + video + '" autoplay loop muted></video>'));
+                    });
                 }
 
                 sessionStorage.setItem('banner-unfirst', true);
@@ -136,13 +145,6 @@
                 }, 1);
             }
         }
-
-        // Disable animations/transitions until the page has loaded.
-        $window.on('load', function () {
-            setTimeout(function () {
-                $body.removeClass('is-loading');
-            }, 1);
-        });
 
         // index Scrolly.
         $('.scrolly').scrolly({
