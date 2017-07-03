@@ -826,6 +826,8 @@ table {
       text-align: center;
       top: 0;
       width: 2em; }
+  .poptrox-popup iframe {
+    overflow: hidden; }
   .poptrox-popup .caption {
     position: absolute;
     bottom: 0;
