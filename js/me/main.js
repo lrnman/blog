@@ -91,7 +91,7 @@
 
             $gallery.poptrox({
                 baseZIndex: 10001,
-                useBodyOverflow: true,
+                useBodyOverflow: false,
                 usePopupEasyClose: false,
                 overlayColor: '#1f2328',
                 overlayOpacity: 0.65,
