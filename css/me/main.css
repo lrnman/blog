@@ -828,9 +828,10 @@ table {
       width: 2em; }
   .poptrox-popup .pic {
     position: relative;
-    overflow: hidden; }
+    z-index: 10101;
+    overflow: auto; }
   .poptrox-popup iframe {
-    overflow: hidden; }
+    overflow: auto; }
   .poptrox-popup .caption {
     position: absolute;
     bottom: 0;
