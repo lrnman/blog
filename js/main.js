@@ -126,6 +126,7 @@
         if ($banner.length) {
             //banner显示状态
             if (sessionStorage.getItem('banner-unfirst')) {
+                $body.removeClass('hide');
                 $banner.remove();
             } else {
                 //banner video 资源加载
@@ -142,7 +143,7 @@
                         $banner.remove();
                         clearInterval(timeId);
                     }
-                }, 1);
+                }, 100);
             }
         }
 
@@ -404,8 +405,8 @@
             var $gallery = $('.gallery');
             $gallery.poptrox({
                 baseZIndex: 10001,
-                useBodyOverflow: true,
-                usePopupEasyClose: true,
+                useBodyOverflow: false,
+                usePopupEasyClose: false,
                 overlayColor: '#1f2328',
                 overlayOpacity: 0.65,
                 usePopupDefaultStyling: false,
