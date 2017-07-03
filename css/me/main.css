@@ -794,9 +794,7 @@ table {
   box-sizing: content-box;
   background: #fff;
   padding-bottom: 3em;
-  box-shadow: 0 0.1em 0.15em 0 rgba(0, 0, 0, 0.15);
-  min-height: inherit !important;
-  min-width: inherit !important; }
+  box-shadow: 0 0.1em 0.15em 0 rgba(0, 0, 0, 0.15); }
   .poptrox-popup .loader {
     position: absolute;
     top: 50%;
